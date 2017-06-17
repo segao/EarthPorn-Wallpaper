@@ -72,14 +72,14 @@ def request_data(url):
 def download_wallpaper(data):
     is_first_image = 1
     for post in data["data"]["children"]: # Iterate through JSON URLs
-        wallpaper_name = i["data"]["title"] + ".jpg" # Create file name based on post title 
+        wallpaper_name = post["data"]["title"] + ".jpg" # Create file name based on post title 
         wallpaper_path = get_wallpaper_path(wallpaper_name) # Create file path by calling get_wallpaper_path()
-        wallpaper_url = i["data"]["url"] # Fetch image url 
+        wallpaper_url = post["data"]["url"] # Fetch image url 
         
         if wallpaper_url[7:12] == "imgur": # Adjusts imgur links to direct image links 
             wallpaper_url += ".jpg" # Ex: http://imgur.com/CG6ihHk -> http://imgur.com/CG6ihHk.jpg
             
-        wallpaper_thumbnail = i["data"]["thumbnail"] # Grab thumbnail data
+        wallpaper_thumbnail = post["data"]["thumbnail"] # Grab thumbnail data
         # From Reddit JSON API:
         # full URL to the thumbnail for this link
         # "self" if this is a self post (Note: self post = text post)
