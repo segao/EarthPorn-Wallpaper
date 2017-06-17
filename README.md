@@ -21,3 +21,6 @@ Display help message:
 ```
 python landscrape.py -help
 ```
+# TO-DO
+- Allow exclusions based on image size/resolution
+- Allow user input to select various image subreddits
