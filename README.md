@@ -7,7 +7,8 @@ This script uses the existing Reddit JSON API. Instructions for its use can be f
 
 A custom directory path can be used, otherwise all images will be saved to <b>'/Users/USERNAME/Pictures/EarthPorn Wallpapers'</b>. An image will not be saved if it already exists.
 
-Changing the JSON URLs to another image based subreddit should fetch the top posts from that specific subreddit. Click [here](https://www.reddit.com/dev/api) to view the Reddit API dev page for more information. The `t` parameter can be used to specify the time period of posts to display. Example:
+Changing the JSON URLs to another image based subreddit should fetch the top posts from that specific subreddit. Click [here](https://www.reddit.com/dev/api) to view the Reddit API dev page for more information. The `t` parameter can be used to specify the time period of posts to display, while the 'limit' parameter will return a specific number of posts..
+Example:
 ```
 http://www.reddit.com/r/earthporn.json?sort=all&t=month&limit=10
 ```
