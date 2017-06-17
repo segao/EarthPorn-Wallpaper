@@ -1,5 +1,3 @@
-# Landscrape, v.1.0
-# Sharon Gao 2017
 import urllib, urllib2
 import json
 import sys
@@ -73,7 +71,7 @@ def request_data(url):
 
 def download_wallpaper(data):
     is_first_image = 1
-    for i in data["data"]["children"]: # Iterate through JSON URLs
+    for post in data["data"]["children"]: # Iterate through JSON URLs
         wallpaper_name = i["data"]["title"] + ".jpg" # Create file name based on post title 
         wallpaper_path = get_wallpaper_path(wallpaper_name) # Create file path by calling get_wallpaper_path()
         wallpaper_url = i["data"]["url"] # Fetch image url 
