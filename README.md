@@ -3,7 +3,7 @@ A python script that downloads the top upvoted images from the nature and landsc
 
 # About
 This script uses the existing Reddit JSON API. Instructions for its use can be found [here](https://github.com/reddit/reddit/wiki/API).
-[This](http://stackoverflow.com/questions/431205/how-can-i-programatically-change-the-background-in-mac-os-x) particular Stack Overflow post helped me code how to change the Mac wallpaper.
+[This](http://stackoverflow.com/questions/431205/how-can-i-programatically-change-the-background-in-mac-os-x) particular Stack Overflow post helped me code how to change a Mac wallpaper.
 
 A custom directory path can be used, otherwise all images will be saved to <b>'/Users/USERNAME/Pictures/EarthPorn Wallpapers'</b>. Changing the JSON URLs to another image based subreddit should fetch the top posts from that specific subreddit.
 
