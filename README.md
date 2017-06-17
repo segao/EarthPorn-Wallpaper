@@ -10,7 +10,7 @@ A custom directory path can be used, otherwise all images will be saved to <b>'/
 Changing the JSON URLs to another image based subreddit should fetch the top posts from that specific subreddit. Click [here](https://www.reddit.com/dev/api) to view the Reddit API dev page for more information. The `t` parameter can be used to specify the time period of posts to display, while the 'limit' parameter will return a specific number of posts.
 Example:
 ```
-http://www.reddit.com/r/earthporn.json?sort=all&t=month&limit=10
+http://www.reddit.com/r/earthporn.json?sort=top&t=all&limit=10
 ```
 
 
