@@ -6,7 +6,7 @@ from os.path import join, expanduser, isfile, exists
 
 # URLS of EarthPorn Subreddit JSON
 JSON_URL_TODAY = 'http://www.reddit.com/r/earthporn.json?sort=top&limit=1'
-JSON_URL_ALL_TIME = 'http://www.reddit.com/r/earthporn.json?sort=top&t=month&limit=25'
+JSON_URL_MONTH = 'http://www.reddit.com/r/earthporn.json?sort=top&t=month&limit=25'
 
 # User Agent String according to Reddit's rules for accessing API: https://github.com/reddit/reddit/wiki/API
 USER_AGENT_STRING = {'User-Agent': 'osx:r/EarthPorn.wallpaper.fetcher:v1.0 (by /u/beetchu)'}
@@ -112,17 +112,17 @@ def set_wallpaper(wallpaper_path):
         subprocess.Popen(SCRIPT_TO_SET_WALLPAPER%wallpaper_path, shell = True)      
     
 def main():
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 1: # No arguments
         url = JSON_URL_TODAY
         request_data(url)
-    elif len(sys.argv) == 2:
-        if sys.argv[1] == '-dl':
-            url = JSON_URL_ALL_TIME
+    elif len(sys.argv) == 2: 
+        if sys.argv[1] == '-dl': # Download top 25 posts of the month
+            url = JSON_URL_MONTH
             request_data(url)
-        elif sys.argv[1] == '-help':
+        elif sys.argv[1] == '-help': # Display help message
             print_help_message()
         else:
-            print('Invalid argument.')
+            print('Invalid argument.') # Default to help message
             print_help_message()
     else:
         print_help_message()
