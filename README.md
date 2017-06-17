@@ -28,6 +28,6 @@ Display help message:
 ```
 python landscrape.py -help
 ```
-# TO-DO
+# To Do
 - Allow exclusions based on image size/resolution
 - Allow user input to select various image subreddits
