@@ -76,7 +76,7 @@ def download_wallpaper(data):
         wallpaper_path = get_wallpaper_path(wallpaper_name) # Create file path by calling get_wallpaper_path()
         wallpaper_url = post["data"]["url"] # Fetch image url 
         
-        if wallpaper_url[7:12] == "imgur": # Adjusts imgur links to direct image links 
+        if wallpaper_url[7:12] == "imgur" or wallpaper_url[8:13] == "imgur": # Adjusts imgur links to direct image links 
             wallpaper_url += ".jpg" # Ex: http://imgur.com/CG6ihHk -> http://imgur.com/CG6ihHk.jpg
             
         wallpaper_thumbnail = post["data"]["thumbnail"] # Grab thumbnail data
