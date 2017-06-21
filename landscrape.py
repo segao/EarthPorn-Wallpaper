@@ -1,3 +1,5 @@
+# Sharon Gao, 2017
+# Landscrape v1.0
 import urllib, urllib2
 import json
 import sys
