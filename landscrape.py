@@ -36,7 +36,7 @@ SPI_SETDESKWALLPAPER = 20
 
 def print_help_message():
     help_message = """
-    EarthPorn Wallpaper Fetcher for Mac and Windows OS 
+    EarthPorn Wallpaper Fetcher
     version 1.1     June 2017
     by Sharon Gao   github.com/segao
     
