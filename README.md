@@ -1,5 +1,5 @@
 # Landscrape
-A python script that downloads the top upvoted images from the nature and landscape subreddit, [/r/EarthPorn](https://reddit.com/r/EarthPorn), and sets it as your current Mac OS wallpaper.
+A python script that downloads the top upvoted images from the nature and landscape subreddit, [/r/EarthPorn](https://reddit.com/r/EarthPorn), and sets it as your current OS wallpaper.
 
 # About
 This script uses the existing Reddit JSON API. Instructions for its use can be found [here](https://github.com/reddit/reddit/wiki/API).
@@ -31,3 +31,4 @@ python landscrape.py -help
 # To Do
 - Allow exclusions based on image size/resolution
 - Allow user input to select various image subreddits
+- Test on Linux

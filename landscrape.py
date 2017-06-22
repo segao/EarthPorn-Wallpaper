@@ -1,8 +1,10 @@
 # Sharon Gao, 2017
-# Landscrape v1.0
+# Landscrape v1.1
 import urllib, urllib2
 import json
 import sys
+import ctypes
+import platform
 from os import makedirs
 from os.path import join, expanduser, isfile, exists
 
@@ -29,14 +31,17 @@ set desktop picture to POSIX file "%s"
 end tell
 END"""
 
+# Windows System Parameters action
+SPI_SETDESKWALLPAPER = 20
+
 def print_help_message():
     help_message = """
-    EarthPorn Wallpaper Fetcher for Mac OS 
-    version 1.0     June 2017
+    EarthPorn Wallpaper Fetcher for Mac and Windows OS 
+    version 1.1     June 2017
     by Sharon Gao   github.com/segao
     
     Usage:
-    python landscrape.py [option]
+    python landscrape.py [argument] 					
     
     no argument         download the top upvoted image in the past 24 hours and set it as current wallpaper
     -dl                 download the top 25 upvoted images from all time and set the first as current wallpaper
@@ -44,6 +49,15 @@ def print_help_message():
     """
     print(help_message)
     sys.exit()
+
+def get_os(wallpaper_path):
+	user_os = platform.system()
+	if user_os == "Windows":
+		set_wallpaper_windows(wallpaper_path)
+	elif user_os == "Mac":
+		set_wallpaper_mac(wallpaper_path)
+	elif user_os == "Linux":
+		set_wallpaper_linux(wallpaper_path)
 
 def get_wallpaper_path(wallpaper_name):
     if WALLPAPER_DIRECTORY.strip() != '': # Remove whitespace
@@ -56,8 +70,7 @@ def get_wallpaper_path(wallpaper_name):
     
     wallpaper_path = join(directory, wallpaper_name)
     return wallpaper_path
-    
-    
+     
 def request_data(url):
     try:
         response = urllib2.Request(url, headers = USER_AGENT_STRING)
@@ -103,15 +116,32 @@ def download_wallpaper(data):
             pass
         
         if is_first_image == 1:
-            set_wallpaper(wallpaper_path)
+            get_os(wallpaper_path)
         is_first_image = 0
     
 # Set Mac Wallpaper
 # Taken from: http://stackoverflow.com/questions/431205/how-can-i-programatically-change-the-background-in-mac-os-x
-def set_wallpaper(wallpaper_path):
+def set_wallpaper_mac(wallpaper_path):
     if isfile(wallpaper_path):
         import subprocess
-        subprocess.Popen(SCRIPT_TO_SET_WALLPAPER%wallpaper_path, shell = True)      
+        subprocess.Popen(SCRIPT_TO_SET_WALLPAPER%wallpaper_path, shell = True)  
+
+# Determine if OS is 64 bit    
+def is_os_64bit():
+	return platform.machine().endswith('64')
+
+# Set Windows Wallpaper
+def set_wallpaper_windows(wallpaper_path):
+    if isfile(wallpaper_path):
+    	if is_os_64bit(): # 64 bit
+    		ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, wallpaper_path , 0)
+    	else: # 32 bit
+        	ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, wallpaper_path , 0)
+
+# Set Linux Wallpaper
+def set_wallpaper_linux(wallpaper_path):
+    if isfile(wallpaper_path):
+        os.system("gsettings set org.gnome.desktop.background picture-uri wallpaper_path")  
     
 def main():
     if len(sys.argv) == 1: # No arguments
