@@ -51,13 +51,13 @@ def print_help_message():
     sys.exit()
 
 def get_os(wallpaper_path):
-	user_os = platform.system()
-	if user_os == "Windows":
-		set_wallpaper_windows(wallpaper_path)
-	elif user_os == "Mac":
-		set_wallpaper_mac(wallpaper_path)
-	elif user_os == "Linux":
-		set_wallpaper_linux(wallpaper_path)
+    user_os = platform.system()
+    if user_os == "Windows":
+    	set_wallpaper_windows(wallpaper_path)
+    elif user_os == "Darwin": # Mac OS
+    	set_wallpaper_mac(wallpaper_path)
+    elif user_os == "Linux" or user_os == "Linux2":
+    	set_wallpaper_linux(wallpaper_path)
 
 def get_wallpaper_path(wallpaper_name):
     if WALLPAPER_DIRECTORY.strip() != '': # Remove whitespace
